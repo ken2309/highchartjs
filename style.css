@@ -1,0 +1,29 @@
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 200px;
+  background-color: #eee;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+li:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+#chart-container {
+  margin-left: 220px;
+  padding: 20px;
+}
