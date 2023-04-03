@@ -1,26 +1,38 @@
 const seriesList = [
-  // {
-  //   name: "Series 1", data: [
-  //     [0, 4, 6, 10, 12],
-  //     [1, 3, 5, 7, 10],
-  //     [2, 4, 6, 8, 10]
-  //   ], type: 'boxplot'
-  // },
   {
-    name: "Series 2", data: [
+    name: 'Basketball',
+    id: 'basketball',
+    data: [
+      [0, 4, 6, 10, 12],
+      [1, 3, 5, 7, 10],
+      [3, 4, 6, 8, 10]
+    ],
+    type: 'boxplot'
+  },
+  {
+    name: 'Triathlon',
+    id: 'triathlon',
+    data: [
       [0, 4, 6, 13, 18],
       [1, 7, 9, 14, 16],
       [2, 4, 10, 16, 20]
-    ], type: 'boxplot'
+    ],
+    type: 'boxplot'
   },
   {
-    name: "Series 3", data: [
+    name: 'Volleyball',
+    id: 'volleyball',
+    data: [
       [0, 4],
       [0, 7],
       [0, 13],
       [1, 3],
       [2, 4]
-    ], type: 'scatter'
+    ],
+    type: 'scatter',
+    marker: {
+      symbol: 'triangle'
+    }
   },
 ];
 
@@ -45,20 +57,21 @@ seriesList.forEach((series, index) => {
     const seriesOptions = {
       name: series.name,
       data: series.data,
-      type: series.type
+      type: series.type,
+      marker: series.marker
     };
 
     chart.addSeries(seriesOptions);
 
     const allSeries = chart.series;
-    console.log(allSeries);
+    // console.log(allSeries);
     const boxplotSeries = allSeries.find((s) => s.userOptions.type === "boxplot");
     const scatterSeries = allSeries.find((s) => s.userOptions.type === "scatter");
-    console.log(boxplotSeries, scatterSeries);
+    // console.log(boxplotSeries, scatterSeries);
     if (boxplotSeries && scatterSeries) {
       scatterSeries.points.forEach((point, index) => {
         const boxplotPoint = boxplotSeries.points[index];
-        if(boxplotPoint) point.graphic.element.transform = boxplotPoint.graphic.element.transform;
+        if (boxplotPoint) point.graphic.element.transform = boxplotPoint.graphic.element.transform;
       });
     }
   });
